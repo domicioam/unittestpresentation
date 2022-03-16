@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CalculatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-16T15:19:43" hostname="Domicios-MBP.lan" time="0.113">
+<testsuite name="CalculatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-16T15:33:24" hostname="Domicios-MBP.lan" time="0.1">
   <properties/>
-  <testcase name="should_sum_two_numbers()" classname="CalculatorTest" time="0.101"/>
-  <testcase name="should_sum_two_expressions()" classname="CalculatorTest" time="0.001"/>
-  <testcase name="should_multiply_two_numbers()" classname="CalculatorTest" time="0.002"/>
-  <testcase name="should_multiply_two_expressions()" classname="CalculatorTest" time="0.002"/>
+  <testcase name="should_sum_two_numbers()" classname="CalculatorTest" time="0.091"/>
+  <testcase name="should_sum_two_expressions()" classname="CalculatorTest" time="0.0"/>
+  <testcase name="should_multiply_two_numbers()" classname="CalculatorTest" time="0.001"/>
+  <testcase name="should_multiply_two_expressions()" classname="CalculatorTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
