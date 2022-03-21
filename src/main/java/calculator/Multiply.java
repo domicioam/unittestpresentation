@@ -1,3 +1,5 @@
+package calculator;
+
 public record Multiply(Expression left, Expression right) implements Expression {
     @Override
     public Number evaluate() {
