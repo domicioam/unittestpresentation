@@ -2,8 +2,6 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
-import calculator.*;
-import calculator.Number;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,83 +9,79 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTest {
     Expression left;
     Expression right;
-    calculator.Number five;
-    calculator.Number six;
+    Number five;
+    Number six;
 
     @BeforeEach
     public void setup() {
-         left = new Sum(new calculator.Number(1), new calculator.Number(2));
-         right = new Sum(new calculator.Number(4), new calculator.Number(5));
-         five = new calculator.Number(5);
-         six = new calculator.Number(6);
+         left = new Sum(new Number(1), new Number(2));
+         right = new Sum(new Number(4), new Number(5));
+         five = new Number(5);
+         six = new Number(6);
     }
 
     @Test
     public void should_sum_two_numbers() {
-        // Arrange
+        // Given
+        Expression five = new Number(5);
+        Expression six = new Number(6);
         Expression sum = new Sum(five, six);
 
-        // Act
-        calculator.Number result = sum.evaluate();
+        // When
+        Number result = sum.evaluate();
 
-        // Assert
-        assertThat(result).isEqualTo(new calculator.Number(11));
+        // Then
+        assertThat(result).isEqualTo(new Number(11));
     }
 
     @Test
     public void should_sum_two_expressions() {
-        // Arrange
+        // Given
         Expression sum = new Sum(left, right);
 
-        // Act
-        calculator.Number result = sum.evaluate();
+        // When
+        Number result = sum.evaluate();
 
-        // Assert
-        assertThat(result).isEqualTo(new calculator.Number(12));
+        // Then
+        assertThat(result).isEqualTo(new Number(12));
     }
 
     @Test
     public void should_multiply_two_numbers() {
-        // Arrange
+        // Given
         Expression multiply = new Multiply(five, six);
 
-        // Act
-        calculator.Number result = multiply.evaluate();
+        // When
+        Number result = multiply.evaluate();
 
-        // Assert
-        assertThat(result).isEqualTo(new calculator.Number(30));
+        // Then
+        assertThat(result).isEqualTo(new Number(30));
     }
 
     @Test
     public void should_multiply_two_expressions() {
-        // Arrange
+        // Given
         Expression multiply = new Multiply(left, right);
 
-        // Act
-        calculator.Number result = multiply.evaluate();
+        // When
+        Number result = multiply.evaluate();
 
-        // Assert
-        assertThat(result).isEqualTo(new calculator.Number(27));
+        // Then
+        assertThat(result).isEqualTo(new Number(27));
     }
 
     @Test
     public void should_divide_two_numbers() {
-        // Arrange
-        Expression division = new Division(new calculator.Number(4), new calculator.Number(2));
+        Expression division = new Division(new Number(4), new Number(2));
+        Number result = division.evaluate();
 
-        // Act
-        calculator.Number result = division.evaluate();
-
-        // Assert
-        assertThat(result).isEqualTo(new calculator.Number(2));
+        assertThat(result).isEqualTo(new Number(2));
     }
 
     @Test
     public void should_fail_division_by_0() {
-        // Arrange
-        Expression division = new Division(new calculator.Number(4), new Number(0));
+        Expression division = new Division(new Number(4), new Number(0));
 
-        // Act
         assertThatExceptionOfType(DivisionByZeroException.class)
                 .isThrownBy(() -> division.evaluate())
                 .withMessage("4 is not divisible by 0");

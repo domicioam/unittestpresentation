@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Account {
+    private int iban;
+
+    public Account(int iban) {
+        this.iban = iban;
+    }
+
     public Account deposit(int amount, LocalDate date) {
         return null;
     }

@@ -2,7 +2,7 @@ package bank;
 
 import java.util.List;
 
-public class ConsolePresenter implements Presenter {
+public class TestPresenter implements Presenter {
     @Override
     public void present(List<Statement> statements) {
 

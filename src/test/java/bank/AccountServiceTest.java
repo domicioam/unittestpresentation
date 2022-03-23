@@ -11,35 +11,34 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class AccountServiceTest {
     @Test
     public void printStatement() {
-        // Arrange
+        // Given
         Presenter presenter = new TestPresenter();
-        LocalDate date = LocalDate.of(2012, 1, 10);
-        Calendar calendar = new Calendar();
-        calendar.setDate(date);
-        AccountService accountService = new AccountService(presenter, calendar, new Account());
+        InMemoryRepository repository = new InMemoryRepository();
 
+        Calendar calendar = new Calendar();
+        LocalDate date = LocalDate.of(2012, 1, 10);
+        calendar.setDate(date);
+
+        Account account = new Account(12345);
+
+        AccountService accountService = new AccountService(presenter, calendar, account, repository);
         accountService.deposit(10);
         accountService.deposit(10);
         accountService.withdraw(10);
         accountService.deposit(10);
 
-        // Act
+        // When
         accountService.printStatement();
 
-        // Assert
-        List<Statement> expected = Arrays.asList(new Deposit(date, 10, 10), new Deposit(date, 10, 20), new Withdraw(date, 10, 10), new Deposit(date, 10, 20));
+        // Then
+        List<Statement> expected = Arrays.asList(
+                new Deposit(date, 10, 10),
+                new Deposit(date, 10, 20),
+                new Withdraw(date, 10, 10),
+                new Deposit(date, 10, 20));
+
         assertThat(presenter.statementList()).isEqualTo(expected);
-    }
-
-    private class TestPresenter implements Presenter {
-        @Override
-        public void present(List<Statement> statements) {
-
-        }
-
-        @Override
-        public List<Statement> statementList() {
-            return null;
-        }
+        assertThat(repository.invokeCount).isEqualTo(4);
     }
 }
+
